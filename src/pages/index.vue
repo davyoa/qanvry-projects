@@ -114,7 +114,7 @@
 
   
        <!-- SERVICES SECTION -->
-      <section id="services" class="border-t border-white/10 p-20 bg-transparent">      
+      <section id="services" class="border-t border-white/10 p-20 bg-transparent flex flex-col gap-[350px]">      
         <!-- SECTION HEADER -->
         <div class="mb-24">
           <p class="text-red-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4">
@@ -226,6 +226,55 @@
               alt="Property evaluation and assessment" 
               class="relative w-full h-[550px] object-scale-down rounded-3xl shadow-2xl transition duration-700 group-hover:scale-[1.02]" 
             />
+          </div>
+        </div>
+
+        <!-- FINANCE SUB-SECTION -->
+        <div id="finance" class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- IMAGE -->
+          <div class="relative group">
+            <div class="absolute -inset-4 bg-red-600/10 blur-3xl rounded-full"></div>
+            <img 
+              src="/finance-keys.png" 
+              alt="Finance keys representing property financing" 
+              class="relative w-full h-[550px] object-scale-down rounded-3xl shadow-2xl transition duration-700 group-hover:scale-[1.02] animate-slide-in-left" 
+            />
+          </div>
+
+          <!-- CONTENT -->
+          <div>
+            <span class="text-red-500 uppercase tracking-[0.25em] text-sm font-semibold">
+              FINANCIAL SERVICES
+            </span>
+
+            <h3 class="font-headline-sm text-[clamp(1rem,3vw,2rem)] text-white mb-6 uppercase leading-tight tracking-tighter animate-fade-in-up">
+              Financing Built <br /> Around Your Vision
+            </h3>
+
+            <p class="mt-8 text-lg text-gray-400 leading-relaxed">
+              Whether you're purchasing your first property, expanding your investment portfolio, 
+              or funding a large-scale development, we help structure financing solutions that 
+              support long-term success.
+            </p>
+
+            <div class="mt-10 space-y-6">
+              <div class="flex gap-5">
+                <span class="text-red-500 font-black">01</span>
+                <p class="text-gray-300">Flexible Funding Structures</p>
+              </div>
+              <div class="flex gap-5">
+                <span class="text-red-500 font-black">02</span>
+                <p class="text-gray-300">Access To Trusted Financial Partners</p>
+              </div>
+              <div class="flex gap-5">
+                <span class="text-red-500 font-black">03</span>
+                <p class="text-gray-300">Guidance From Application To Approval</p>
+              </div>
+            </div>
+
+            <button type="button" class="mt-10 px-8 py-4 bg-red-600 hover:bg-red-700 rounded-xl font-semibold transition-all duration-300">
+              Explore Financing
+            </button>
           </div>
         </div>
       </section>
@@ -455,6 +504,18 @@
     </footer>
   </div>
 </template>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script setup lang="ts">
