@@ -77,7 +77,7 @@
           <span class="font-label-caps text-primary-container mr-2">Location: </span>
           AK-846-2803, Kumasi, Ghana 00233
         </div>
-      </section>
+      </section> 
 
       <!-- ABOUT SECTION -->
       <section class="py-lg px-margin-desktop border-t border-white/10 bg-black fade-in-on-scroll" id="about">
