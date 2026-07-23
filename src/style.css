@@ -1,0 +1,131 @@
+html { 
+  scroll-behavior: smooth; 
+}
+
+/* Dynamic Theme Variables */
+.light {
+  --bg-main: #faf8f5;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-subtle: #f3efe6;
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --border-color: #e5e0d8;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  /* Light subtle vignette overlay just for text readability */
+  --hero-overlay: radial-gradient(circle, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 100%), linear-gradient(to bottom, rgba(250, 248, 245, 0.1), rgba(250, 248, 245, 0.4));
+  --hero-text: #ffffff;
+  --hero-subtext: #f3f4f6;
+  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+.dark {
+  --bg-main: #121413;
+  --bg-surface: #1f201f;
+  --bg-card: #1f201f;
+  --bg-subtle: #181918;
+  --text-main: #e3e2e0;
+  --text-muted: #a3a2a0;
+  --border-color: #343534;
+  --nav-bg: rgba(18, 20, 19, 0.85);
+  /* Dark subtle vignette overlay keeping full photo clarity */
+  --hero-overlay: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.55) 100%), linear-gradient(to bottom, rgba(18, 20, 19, 0.1), rgba(18, 20, 19, 0.5));
+  --hero-text: #ffffff;
+  --hero-subtext: #e3e2e0;
+  --card-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.theme-card {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-nav {
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: var(--border-color);
+}
+
+.material-symbols-outlined { 
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; 
+}
+
+/* Hero Section Image & Overlay Enhancements */
+#hero {
+  position: relative;
+}
+
+/* Ensure images stay completely sharp, bright, and blur-free */
+.hero-bg-slide img {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out, transform 8s ease-out;
+  transform: scale(1.03);
+}
+
+.hero-bg-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hero Text Drop Shadow to maintain high readability on sharp images */
+#hero h1, 
+#hero p {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Product Card Hover Expansion */
+/* Controlled Grid Column Expansion in style.css */
+
+/* Product Card Base Styles */
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              grid-column 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s ease;
+  will-change: transform, grid-column;
+}
+
+/* 4-Column Desktop Dynamics (min-width: 1024px) */
+@media (min-width: 1024px) {
+  
+  /* 1. INNER CARDS (2nd and 3rd in each row): Expand column span */
+  .product-card:not(:nth-child(4n)):not(:nth-child(4n+1)):hover {
+    grid-column: span 2 / span 2;
+    z-index: 10;
+  }
+
+  /* 2. EDGE CARDS (1st and 4th in each row): Scale & lift up cleanly */
+  .product-card:nth-child(4n+1):hover,
+  .product-card:nth-child(4n):hover {
+    transform: translateY(-8px) scale(1.04);
+    z-index: 20;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* 2-Column Tablet Dynamics (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* On 2-column screens, apply smooth scaling to all cards to avoid row overflows */
+  .product-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    z-index: 20;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+}

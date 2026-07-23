@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delight Yourself Enterprise | Premium Alcoholic Beverage Distributor</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN (or your bundler entry) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: "#c59b27",
+              hover: "#a8821d",
+              light: "#f9f3e5",
+              dark: "#f2ca50"
+            },
+            secondary: {
+              DEFAULT: "#d97706",
+              light: "#fef3c7"
+            }
+          },
+          fontFamily: {
+            headline: ["Playfair Display", "serif"],
+            body: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          spacing: {
+            gutter: "24px",
+            "margin-mobile": "20px",
+            "margin-desktop": "80px",
+            "container-max": "1440px"
+          }
+        },
+      },
+    }
+  </script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body class="font-body overflow-x-hidden antialiased">
+
+  <!-- Top Navigation Bar -->
+  <nav class="fixed top-0 w-full z-50 theme-nav border-b transition-colors duration-300">
+    <div class="flex justify-between items-center px-6 md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+      <a href="#hero" class="font-headline text-lg md:text-xl font-bold uppercase tracking-wider text-primary">
+        DELIGHT YOURSELF
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#about">About Us</a>
+        <a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#products">Our Portfolio</a>
+        <a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#service">Service & Care</a>
+        <a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#contact">Contact Us</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="p-2.5 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-all" title="Toggle Light/Dark Theme">
+          <span class="material-symbols-outlined text-xl block dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:block">light_mode</span>
+        </button>
+
+        <a class="hidden md:inline-block bg-primary text-white px-6 py-2.5 text-xs uppercase font-bold tracking-widest rounded-full hover:bg-primary-hover active:scale-95 transition-all shadow-md" href="#contact">
+          Partner With Us
+        </a>
+
+        <button class="md:hidden text-primary p-2" id="mobile-menu-btn">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Menu -->
+  <div class="fixed inset-0 z-[60] bg-white dark:bg-zinc-900 backdrop-blur-xl flex flex-col items-center justify-center gap-8 hidden" id="mobile-menu">
+    <button class="absolute top-6 right-6 text-primary" id="mobile-menu-close">
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <a class="text-2xl font-headline font-bold uppercase tracking-widest mobile-link" href="#about">About Us</a>
+    <a class="text-2xl font-headline font-bold uppercase tracking-widest mobile-link" href="#products">Our Portfolio</a>
+    <a class="text-2xl font-headline font-bold uppercase tracking-widest mobile-link" href="#service">Service & Care</a>
+    <a class="text-2xl font-headline font-bold uppercase tracking-widest mobile-link" href="#contact">Contact Us</a>
+    <a class="bg-primary text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-full mobile-link" href="#contact">Partner With Us</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center text-center overflow-hidden" id="hero">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <!-- Local Background Images -->
+        <div class="hero-bg-slide active">
+        <img 
+            alt="Delight Yourself Showcase 1" 
+            class="w-full h-full object-cover filter brightness-95 contrast-105" 
+            src="/images/background_pic1.jpeg"
+        />
+        </div>
+
+        <div class="hero-bg-slide">
+        <img 
+            alt="Fine Spirits Reserve" 
+            class="w-full h-full object-cover filter brightness-95 contrast-105" 
+            src="https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=1920&q=80"
+        />
+        </div>
+
+        <div class="hero-bg-slide">
+        <img 
+            alt="Warm Celebration Pour" 
+            class="w-full h-full object-cover filter brightness-95 contrast-105" 
+            src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1920&q=80"
+        />
+        </div>
+
+        <div class="hero-bg-slide">
+        <img 
+            alt="Delight Yourself Showcase 2" 
+            class="w-full h-full object-cover filter brightness-95 contrast-105" 
+            src="/images/background_pic2.jpeg"
+        />
+        </div>
+
+        <div class="hero-bg-slide">
+        <img 
+            alt="Delight Yourself Showcase 3" 
+            class="w-full h-full object-cover filter brightness-95 contrast-105" 
+            src="/images/background_pic3.jpeg"
+        />
+        </div>
+      <div class="absolute inset-0 z-10 pointer-events-none" style="background: var(--hero-overlay);"></div>
+    </div>
+
+    <div class="relative z-20 px-6 md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 backdrop-blur-md px-5 py-2 rounded-full mb-6">
+        <span class="material-symbols-outlined text-primary text-sm">favorite</span>
+        <span class="text-xs font-bold uppercase tracking-widest text-primary">Serving Ghana Since October 2019</span>
+      </div>
+
+      <h1 class="font-headline text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight" style="color: var(--hero-text);">
+        Shared Moments. <br/>
+        <span class="text-primary italic">Delightfully Served.</span>
+      </h1>
+
+      <p class="text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mb-10 font-normal" style="color: var(--hero-subtext);">
+        We bridge world-class global distilleries with Ghanaian hospitality—distributing trusted, high-quality international beverages with genuine care and dedication.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+        <a class="bg-primary text-white hover:bg-primary-hover px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-primary/20 text-center" href="#products">
+          Explore Portfolio
+        </a>
+        <a class="bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white hover:bg-white dark:hover:bg-zinc-800 px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all text-center shadow-md" href="#about">
+          Discover Our Care
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service & Hospitality Highlight Banner -->
+  <section class="py-12 border-y border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50" id="service">
+    <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
+            <span class="material-symbols-outlined text-2xl">handshake</span>
+          </div>
+          <h3 class="font-headline font-semibold text-lg mb-1">Warm Relationship Focus</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400">We treat every customer, vendor, and retail distributor as a lifelong partner.</p>
+        </div>
+
+        <div class="p-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
+            <span class="material-symbols-outlined text-2xl">verified_user</span>
+          </div>
+          <h3 class="font-headline font-semibold text-lg mb-1">Guaranteed Authenticity</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400">100% genuine imported beverages directly sourced for complete peace of mind.</p>
+        </div>
+
+        <div class="p-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
+            <span class="material-symbols-outlined text-2xl">local_shipping</span>
+          </div>
+          <h3 class="font-headline font-semibold text-lg mb-1">Reliable Distribution</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Prompt, careful delivery across Ghana and the wider West African region.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="py-24 relative" id="about">
+    <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+      <div class="max-w-3xl mb-16">
+        <div class="w-12 h-1 bg-primary mb-6 rounded-full"></div>
+        <span class="text-xs font-bold tracking-widest text-primary uppercase block mb-2">Who We Are</span>
+        <h2 class="font-headline text-3xl md:text-5xl font-bold mb-6">Our Commitment to Delight</h2>
+        <p class="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+          Established on October 25th, 2019, Delight Yourself Enterprise was built on a foundation of empathy, integrity, and warmth. Registered under the Registration of Business Names Act, 1962 (N.151), our core purpose is to elevate everyday celebrations by delivering finest-quality international alcoholic beverages to households, venues, and businesses across Ghana and West Africa.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="p-8 rounded-2xl theme-card border">
+          <span class="material-symbols-outlined text-primary text-4xl mb-4">flag</span>
+          <h3 class="font-headline text-2xl font-bold mb-3">Our Mission</h3>
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            To enrich social connections by delivering quality, brand-authentic alcoholic beverages with exceptional care, empathy, and complete customer satisfaction.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl theme-card border">
+          <span class="material-symbols-outlined text-primary text-4xl mb-4">visibility</span>
+          <h3 class="font-headline text-2xl font-bold mb-3">Our Vision</h3>
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            To stand as West Africa's most trusted and empathetic distributor—celebrated for reliability, authentic partnerships, and service excellence.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-headline text-2xl font-bold mb-8 text-center">Guided By Principles of Care</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div class="p-6 rounded-xl theme-card border text-center">
+            <span class="material-symbols-outlined text-primary text-3xl mb-2">workspace_premium</span>
+            <h4 class="font-bold uppercase text-xs tracking-wider mb-2">Quality</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Strict standard checks for every bottle.</p>
+          </div>
+          <div class="p-6 rounded-xl theme-card border text-center">
+            <span class="material-symbols-outlined text-primary text-3xl mb-2">sentiment_very_satisfied</span>
+            <h4 class="font-bold uppercase text-xs tracking-wider mb-2">Empathy</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Listening to and putting customers first.</p>
+          </div>
+          <div class="p-6 rounded-xl theme-card border text-center">
+            <span class="material-symbols-outlined text-primary text-3xl mb-2">gavel</span>
+            <h4 class="font-bold uppercase text-xs tracking-wider mb-2">Integrity</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Transparent, honest business practices.</p>
+          </div>
+          <div class="p-6 rounded-xl theme-card border text-center">
+            <span class="material-symbols-outlined text-primary text-3xl mb-2">verified</span>
+            <h4 class="font-bold uppercase text-xs tracking-wider mb-2">Reliability</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Consistent and dependable supply chains.</p>
+          </div>
+          <div class="p-6 rounded-xl theme-card border text-center">
+            <span class="material-symbols-outlined text-primary text-3xl mb-2">trending_up</span>
+            <h4 class="font-bold uppercase text-xs tracking-wider mb-2">Growth</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Building long-term communal success.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-24 bg-gray-100/60 dark:bg-zinc-950/60 relative border-t border-gray-200 dark:border-zinc-800" id="products">
+    <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+      <div class="text-center mb-16">
+        <span class="text-xs font-bold tracking-widest text-primary uppercase block mb-2">Curated Selections</span>
+        <h2 class="font-headline text-3xl md:text-5xl font-bold mb-4">Our Beverage Lineup</h2>
+        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 max-w-lg mx-auto">Hover over any card to reveal extra category details and inquiry options.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+        
+        <!-- 1. Premium Whisky Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="images/bottle_11.jpeg" alt="Premium Whisky" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Spirits</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Premium Whisky</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Rich, smooth, and meticulously aged for refined tastes across West Africa.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Directly imported single malts and master-blended whisky labels.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Premium Rum Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="images/bottle_10.jpeg" alt="Premium Rum" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Spirits</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Premium Rum</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Bold, aromatic, and expertly distilled sugarcane reserve recipes.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Dark, spiced, and gold aged rum variations for craft mixology.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Premium Vodka Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="images/bottle_9.jpeg" alt="Premium Vodka" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Spirits</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Premium Vodka</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Pure, crisp, and exceptionally smooth multiple-filtered vodka.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Ideal for high-end hospitality venues, lounges, and signature events.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Premium Gin Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="https://images.unsplash.com/photo-1608885898957-a559228e8749?auto=format&fit=crop&w=800&q=80" alt="Premium Gin" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Spirits</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Premium Gin</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Crisp botanical infusion infused with natural citrus and juniper notes.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Distilled with authentic handpicked global botanicals.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Fine Wine Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="images/bottle_1.jpeg" alt="Fine Wines" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Wines</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Fine Wines</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Elegant reds, crisp whites, and celebratory sparkling wines.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Directly imported vineyard bottles crafted for memorable toasts.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Premium Brandy Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="images/bottle_13.jpeg" alt="Premium Brandy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Spirits</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Premium Brandy</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Rich, warm oak-aged cognac and brandy varieties.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Distilled grape spirits carefully matured in oak barrels.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Premium Beer Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=800&q=80" alt="Premium Beer" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Brews</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">Premium Beer</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Refreshing lagers and international brews for high-volume supply.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Chilled, reliable lager distribution suited for retail and events.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. RTDs Card -->
+        <div class="product-card group relative h-96 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 shadow-xl">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="RTDs Canwine" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+          <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Ready To Drink</span>
+            <h3 class="font-headline text-2xl text-white font-bold mb-2 group-hover:text-primary transition-colors">RTDs (Canwine)</h3>
+            <p class="text-xs text-gray-200 leading-relaxed mb-4">Convenient ready-to-drink options loaded with vibrant taste.</p>
+            <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+              <p class="text-xs text-gray-300 mb-4">Modern canned wine and cocktail formats tailored for dynamic lifestyle venues.</p>
+              <a href="#contact" class="inline-block bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary-hover">Request Order</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us & Footer Section -->
+  <footer class="py-24 border-t border-gray-200 dark:border-zinc-800" id="contact">
+    <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div>
+        <span class="text-xs font-bold tracking-widest text-primary uppercase block mb-2">We're Here For You</span>
+        <h2 class="font-headline text-3xl md:text-5xl font-bold mb-6">Let's Connect</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-md">Whether you are looking to restock your establishment, plan an event, or partner as a brand, our team is always ready to assist you.</p>
+
+        <div class="space-y-4 text-sm mb-8">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-xl">call</span>
+            </div>
+            <div>
+              <p class="font-bold">Phone Lines</p>
+              <p class="text-gray-600 dark:text-gray-400">(+233) 597-769-831 / (+233) 509-516-593</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-xl">mail</span>
+            </div>
+            <div>
+              <p class="font-bold">Email Inquiry</p>
+              <p class="text-gray-600 dark:text-gray-400">info@delightyourselfenterprise.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-xl">location_on</span>
+            </div>
+            <div>
+              <p class="font-bold">Headquarters</p>
+              <p class="text-gray-600 dark:text-gray-400">NII OSABU NSUTA LK, DZEN AYOR, ADJRINGANOR-ACCRA, GHANA</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-xl">pin_drop</span>
+            </div>
+            <div>
+              <p class="font-bold">GPS Address & Postal</p>
+              <p class="text-gray-600 dark:text-gray-400">GPS: GD-137-0309 | P.O. BOX 7147 ACCRA-NORTH</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-8 sm:p-10 rounded-2xl theme-card border">
+        <h3 class="font-headline text-2xl font-bold mb-2">Send Us a Message</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">Fill out your details below and our service team will respond promptly.</p>
+        
+        <form id="contact-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1 text-gray-700 dark:text-gray-300">Your Full Name</label>
+            <input type="text" class="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="e.g. Ama Mensah" required/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1 text-gray-700 dark:text-gray-300">Email Address</label>
+            <input type="email" class="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="ama@example.com" required/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1 text-gray-700 dark:text-gray-300">How Can We Serve You?</label>
+            <textarea rows="4" class="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Tell us about your distribution needs or questions..." required></textarea>
+          </div>
+          <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white py-3.5 font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-lg">
+            Submit Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-gray-200 dark:border-zinc-800 text-center text-xs text-gray-500 dark:text-gray-400">
+      <p>&copy; 2026 Delight Yourself Enterprise. All rights reserved. Please enjoy our products responsibly.</p>
+    </div>
+  </footer>
+
+  <!-- Vite Module Script Entry -->
+  <script type="module" src="/src/script.js"></script>
+</body>
+</html>
