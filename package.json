@@ -1,27 +1,14 @@
 {
-  "name": "site",
-  "private": true,
+  "name": "delightyourself",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "@lucide/vue": "^1.20.0",
-    "@vueuse/core": "^14.3.0",
-    "vue": "^3.5.34"
-  },
   "devDependencies": {
-    "@types/node": "^24.12.3",
-    "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/tsconfig": "^0.9.1",
-    "autoprefixer": "^10.5.0",
-    "postcss": "^8.5.15",
-    "tailwindcss": "^3.4.19",
-    "typescript": "~6.0.2",
-    "vite": "^8.0.12",
-    "vue-tsc": "^3.2.8"
+    "vite": "^8.1.1"
   }
 }

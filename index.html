@@ -1,16 +1,718 @@
-<!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CLADALE Industrial | Building Trust Through Structure</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  </head>
-  <body class="font-body-md">
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cladel Construction Limited</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'app-bg': 'var(--bg-main)',
+            'app-surface': 'var(--bg-surface)',
+            'app-surface-dim': 'var(--bg-surface-dim)',
+            'app-text': 'var(--text-main)',
+            'app-text-muted': 'var(--text-muted)',
+            'app-border': 'var(--border-color)',
+            'primary-container': 'var(--brand-red)',
+            'brand-black': 'var(--brand-black)',
+          },
+          padding: {
+            'margin-desktop': '8vw',
+          },
+          fontFamily: {
+            body: ['Poppins', 'sans-serif'],
+            headline: ['Poppins', 'sans-serif'],
+            mono: ['monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+
+<body class="font-body bg-app-bg text-app-text min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav
+    id="main-nav"
+    class="fixed top-0 w-full z-50 flex justify-between items-center px-6 sm:px-12 lg:px-margin-desktop border-b border-app-border transition-all duration-300 ease-in-out bg-app-bg/95 backdrop-blur-md py-5"
+  >
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-primary-container flex items-center justify-center text-white shrink-0">
+        <i data-lucide="building-2" class="w-5 h-5"></i>
+      </div>
+      <span class="font-headline font-extrabold text-lg sm:text-xl text-app-text tracking-tight uppercase">Cladel Construction</span>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden lg:flex gap-10 items-center">
+      <a class="nav-link text-app-text font-medium" href="#hero">Home</a>
+      <a class="nav-link text-app-text font-medium" href="#overview">Overview</a>
+      <a class="nav-link text-app-text font-medium" href="#about">About Us</a>
+      <a class="nav-link text-app-text font-medium" href="#services">Services</a>
+      <a class="nav-link text-app-text font-medium" href="#team">Team</a>
+      <a class="nav-link text-app-text font-medium" href="#contact">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button 
+        id="theme-toggle" 
+        aria-label="Toggle theme"
+        class="p-2.5 text-app-text hover:bg-black/5 dark:hover:bg-white/10 transition-colors border border-app-border flex items-center justify-center"
+      >
+        <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+      </button>
+
+      <a href="#contact" class="hidden sm:flex bg-primary-container text-white px-6 py-3 font-semibold uppercase text-xs tracking-widest hover:bg-black hover:text-white transition-all duration-300 items-center gap-2">
+        <span>Get in Touch</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button 
+        id="mobile-menu-toggle"
+        aria-label="Toggle Menu"
+        class="lg:hidden p-2.5 border border-app-border text-app-text hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+      >
+        <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5 block"></i>
+        <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div 
+    id="mobile-drawer" 
+    class="fixed inset-x-0 top-[77px] bg-app-surface border-b border-app-border z-40 p-8 transition-all duration-300 transform -translate-y-full opacity-0 pointer-events-none lg:hidden flex flex-col gap-6 shadow-2xl"
+  >
+    <a class="mobile-nav-item text-xs uppercase tracking-widest font-bold text-app-text py-2 border-b border-app-border/40" href="#hero">Home</a>
+    <a class="mobile-nav-item text-xs uppercase tracking-widest font-bold text-app-text py-2 border-b border-app-border/40" href="#overview">Overview</a>
+    <a class="mobile-nav-item text-xs uppercase tracking-widest font-bold text-app-text py-2 border-b border-app-border/40" href="#about">About Us</a>
+    <a class="mobile-nav-item text-xs uppercase tracking-widest font-bold text-app-text py-2 border-b border-app-border/40" href="#services">Our Services</a>
+    <a class="mobile-nav-item text-xs uppercase tracking-widest font-bold text-app-text py-2 border-b border-app-border/40" href="#team">Team</a>
+    <a class="mobile-nav-item text-xs uppercase tracking-widest font-bold text-app-text py-2 border-b border-app-border/40" href="#contact">Contact</a>
+    <a href="#contact" class="mobile-nav-item sm:hidden bg-primary-container text-white text-center py-3.5 font-bold uppercase text-xs tracking-widest mt-2 flex items-center justify-center gap-2">
+      <span>Get in Touch</span>
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+
+  <main class="space-y-16 sm:space-y-24">
+    <!-- HERO SECTION -->
+    <section
+      id="hero"
+      class="relative min-h-[90vh] pt-[140px] pb-20 sm:pb-32 flex flex-col items-center justify-center overflow-hidden px-6 sm:px-12 lg:px-margin-desktop text-center transition-colors duration-500"
+    >
+      <!-- Background Slideshow -->
+      <div id="hero-slideshow" class="absolute inset-0 z-0">
+        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80');"></div>
+      </div>
+
+      <!-- Hero Gradient Overlay -->
+      <div class="absolute inset-0 z-[1] hero-gradient-overlay pointer-events-none transition-all duration-500"></div>
+
+      <!-- Hero Content -->
+      <div class="max-w-4xl z-10 fade-in-on-scroll my-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-app-surface border border-app-border text-primary-container text-[11px] font-bold uppercase tracking-widest mb-8">
+          <i data-lucide="shield-check" class="w-4 h-4 shrink-0"></i>
+          <span>Incorporated under the Companies Act, 2019 (Act 992)</span>
+        </div>
+
+        <h1 class="font-headline text-3xl sm:text-5xl md:text-6xl lg:text-[4.75rem] text-app-text dark:text-white mb-8 uppercase leading-[1.1] tracking-tight font-extrabold">
+          Flipping Buildings &amp; Building Plans
+        </h1>
+        
+        <p class="max-w-2xl mx-auto text-app-text-muted dark:text-white/80 text-sm sm:text-base md:text-lg mb-10 font-normal leading-relaxed">
+          We don't just construct buildings—we build lasting relationships, strong foundations, and a better future across Ghana.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
+          <a href="#services" class="w-full sm:w-auto px-10 py-4 bg-primary-container hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-white font-bold text-xs sm:text-sm uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-3">
+            <span>Our Services</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#overview" class="w-full sm:w-auto px-10 py-4 border border-app-border dark:border-white/30 bg-app-surface/50 hover:bg-black/5 dark:hover:bg-white/10 text-app-text dark:text-white font-bold text-xs sm:text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-3">
+            <span>Explore Overview</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Location Badge -->
+      <div class="mt-16 z-10 inline-flex items-center gap-3 px-6 py-3 bg-app-surface border border-app-border text-app-text text-xs tracking-widest uppercase shadow-md">
+        <i data-lucide="map-pin" class="w-4 h-4 text-primary-container shrink-0"></i>
+        <span>GPS Address: AK-846-2803 | Kumasi, Ghana</span>
+      </div>
+    </section>
+
+    <!-- CLADEL OVERVIEW & BUILDING GHANA'S FUTURE -->
+    <section id="overview" class="py-16 sm:py-24 px-6 sm:px-12 lg:px-margin-desktop bg-app-surface border-y border-app-border fade-in-on-scroll">
+      <div class="max-w-4xl mb-16">
+        <p class="text-primary-container text-xs tracking-[0.25em] font-bold uppercase mb-3">CLADEL OVERVIEW</p>
+        <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold text-app-text uppercase leading-tight">
+          BUILDING GHANA'S FUTURE WITH UNCOMPROMISING PRECISION
+        </h2>
+        <p class="mt-4 text-app-text-muted text-sm sm:text-base leading-relaxed">
+          Through continuous innovation and stringent Quality Management System (KMS) practices, Cladel Construction Limited delivers world-class architectural, civil engineering, and project management infrastructure.
+        </p>
+      </div>
+
+      <!-- Metrics & Highlights Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Metric 1 -->
+        <div class="p-8 bg-app-surface-dim border border-app-border space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-headline text-4xl sm:text-5xl font-extrabold text-primary-container">100%</span>
+            <i data-lucide="shield-check" class="w-6 h-6 text-app-text-muted"></i>
+          </div>
+          <h3 class="font-headline text-sm font-bold uppercase text-app-text tracking-wider pt-2">Safety Track Record</h3>
+          <p class="text-xs text-app-text-muted leading-relaxed">Zero compromise on safety standards, site supervision, and regulatory compliance.</p>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="p-8 bg-app-surface-dim border border-app-border space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-headline text-4xl sm:text-5xl font-extrabold text-app-text">8+</span>
+            <i data-lucide="award" class="w-6 h-6 text-app-text-muted"></i>
+          </div>
+          <h3 class="font-headline text-sm font-bold uppercase text-app-text tracking-wider pt-2">Years Experience</h3>
+          <p class="text-xs text-app-text-muted leading-relaxed">Delivering engineering excellence across residential, commercial, and public works.</p>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="p-8 bg-app-surface-dim border border-app-border space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-headline text-4xl sm:text-5xl font-extrabold text-primary-container">KMS</span>
+            <i data-lucide="check-square" class="w-6 h-6 text-app-text-muted"></i>
+          </div>
+          <h3 class="font-headline text-sm font-bold uppercase text-app-text tracking-wider pt-2">Quality &amp; Review Standard</h3>
+          <p class="text-xs text-app-text-muted leading-relaxed">Strict quality management review procedures for all architectural &amp; structural outputs.</p>
+        </div>
+
+        <!-- Metric 4 -->
+        <div class="p-8 bg-app-surface-dim border border-app-border space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-headline text-4xl sm:text-5xl font-extrabold text-app-text">100+</span>
+            <i data-lucide="building" class="w-6 h-6 text-app-text-muted"></i>
+          </div>
+          <h3 class="font-headline text-sm font-bold uppercase text-app-text tracking-wider pt-2">Projects Completed</h3>
+          <p class="text-xs text-app-text-muted leading-relaxed">Comprehensive building plans, remodelling, and structural completions across Ghana.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section class="py-16 sm:py-24 px-6 sm:px-12 lg:px-margin-desktop bg-app-bg" id="about">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <div class="lg:col-span-7 space-y-6 fade-in-on-scroll">
+          <p class="text-primary-container text-xs tracking-[0.25em] font-bold uppercase">ABOUT US</p>
+          <h2 class="font-headline text-2xl sm:text-3xl md:text-4xl font-extrabold text-app-text uppercase leading-tight">
+            PROVEN COMMITMENT TO QUALITY &amp; INTEGRITY
+          </h2>
+          <p class="text-app-text-muted text-sm sm:text-base leading-relaxed">
+            Cladel Construction Limited is a registered construction and engineering company incorporated under the Companies Act, 2019 (Act 992). We are committed to delivering innovative, high-quality and sustainable construction solutions that meet the needs of residential, commercial and institutional clients across Ghana.
+          </p>
+          <p class="text-app-text-muted text-sm sm:text-base leading-relaxed">
+            With a strong reputation for professionalism, integrity and excellence, we provide comprehensive construction services from concept development and architectural design to project completion. Our experienced team of architects, engineers, project managers and skilled craftsmen work collaboratively to deliver projects that combine functionality, durability, and aesthetic appeal.
+          </p>
+          <p class="text-app-text-muted text-sm sm:text-base leading-relaxed">
+            At Cladel Construction Limited, we understand that every project is an investment. That is why we are dedicated to delivering quality workmanship, maintaining the highest safety standards, and ensuring projects are completed on time and within budget. Whether you are planning a new building, renovating an existing property, or seeking expert construction consultancy, we are your trusted partner in bringing your vision to life.
+          </p>
+          
+          <blockquote class="p-6 border-l-4 border-primary-container bg-app-surface border-y border-r border-app-border font-medium text-app-text text-sm sm:text-base italic leading-relaxed">
+            "At Cladel Construction Limited, we don't just construct buildings, we build lasting relationships, strong foundations and a better future."
+          </blockquote>
+        </div>
+
+        <!-- Mission & Vision Cards -->
+        <div class="lg:col-span-5 space-y-8 fade-in-on-scroll">
+          <div class="p-8 bg-app-surface border border-app-border shadow-sm space-y-4">
+            <div class="w-10 h-10 bg-primary-container flex items-center justify-center text-white">
+              <i data-lucide="target" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-headline text-xl font-extrabold uppercase text-app-text">Our Mission</h3>
+            <p class="text-app-text-muted text-xs sm:text-sm leading-relaxed">
+              To be a leading construction and engineering company in Ghana and beyond.
+            </p>
+          </div>
+
+          <div class="p-8 bg-app-surface border border-app-border shadow-sm space-y-4">
+            <div class="w-10 h-10 bg-primary-container flex items-center justify-center text-white">
+              <i data-lucide="eye" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-headline text-xl font-extrabold uppercase text-app-text">Vision Statement</h3>
+            <p class="text-app-text-muted text-xs sm:text-sm leading-relaxed">
+              To provide exceptional construction, architectural and project management services through quality workmanship, innovative designs, skilled professionals and a commitment to safety, integrity and customer satisfaction.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CORE VALUES GRID -->
+      <div class="mt-20 sm:mt-28 fade-in-on-scroll">
+        <div class="max-w-2xl mb-12">
+          <p class="text-primary-container text-xs tracking-[0.25em] font-bold uppercase mb-2">FOUNDATIONAL PRINCIPLES</p>
+          <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">OUR CORE VALUES</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="award" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">1. Excellence</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We are committed to delivering superior quality in every project through exceptional workmanship and attention to detail.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="scale" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">2. Integrity</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We conduct our business with honesty, transparency, accountability, and professionalism in all our dealings.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="check-circle" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">3. Quality</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We adhere to the highest construction standards, ensuring durable, safe, and reliable structures.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="lightbulb" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">4. Innovation</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We embrace modern construction technologies, creative designs, and efficient solutions to meet our clients' evolving needs.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="shield-alert" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">5. Safety</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We prioritize the health and safety of our employees, clients, partners, and the communities in which we work.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="smile" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">6. Customer Satisfaction</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We build lasting relationships by understanding our clients' needs and consistently exceeding their expectations.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="users" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">7. Teamwork</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We believe collaboration, mutual respect, and effective communication are the foundation of successful projects.</p>
+          </div>
+
+          <div class="p-6 bg-app-surface border border-app-border">
+            <i data-lucide="leaf" class="w-6 h-6 text-primary-container mb-4"></i>
+            <h4 class="font-headline text-sm font-bold text-app-text uppercase mb-2">8. Sustainability</h4>
+            <p class="text-xs text-app-text-muted leading-relaxed">We promote environmentally responsible construction practices and efficient use of resources to create lasting value.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR SERVICES SECTION -->
+    <section id="services" class="py-20 sm:py-28 px-6 sm:px-12 lg:px-margin-desktop bg-app-surface-dim border-t border-app-border overflow-hidden">
+      <div class="max-w-3xl mb-20 fade-in-on-scroll">
+        <p class="text-primary-container uppercase tracking-[0.25em] text-xs font-bold mb-3">
+          WHAT WE DO
+        </p>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl text-app-text uppercase font-extrabold leading-tight">
+          OUR COMPREHENSIVE <span class="text-primary-container">SERVICES</span>
+        </h2>
+        <p class="mt-4 text-app-text-muted text-sm sm:text-base leading-relaxed">
+          At Cladel Construction Limited, we provide a comprehensive range of construction and engineering services tailored to meet the unique needs of our clients.
+        </p>
+      </div>
+
+      <!-- Alternating Services Showcase -->
+      <div class="space-y-20 sm:space-y-28">
+
+        <!-- Service 1 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 01</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Building Construction</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We undertake residential, commercial, and institutional building projects with a commitment to quality, safety, and timely delivery.
+            </p>
+          </div>
+          <div class="lg:col-span-6 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=80" alt="Building Construction" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Residential, Commercial &amp; Institutional</span>
+                <i data-lucide="building" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 order-2 lg:order-1 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Architectural Design" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Aesthetic &amp; Compliant Concepts</span>
+                <i data-lucide="compass" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 02</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Architectural Design</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              Our experienced architects create innovative, functional, and aesthetically appealing building designs that meet clients' requirements while complying with regulatory standards.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 03</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Building Plans &amp; Approvals</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We prepare detailed architectural and structural drawings and assist clients in obtaining the necessary planning and building approvals from the relevant authorities.
+            </p>
+          </div>
+          <div class="lg:col-span-6 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80" alt="Building Plans & Approvals" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Permits &amp; Structural Drawings</span>
+                <i data-lucide="file-check" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 order-2 lg:order-1 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" alt="Renovation & Remodelling" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Property Modernization</span>
+                <i data-lucide="wrench" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 04</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Renovation &amp; Remodelling</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We transform existing buildings through renovations, extensions, remodelling, and modernization to improve functionality, appearance, and value.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 05</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Civil Engineering Works</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We execute various civil engineering projects, including drainage systems, concrete works, pavements, roadworks, retaining walls, and site development.
+            </p>
+          </div>
+          <div class="lg:col-span-6 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1000&q=80" alt="Civil Engineering Works" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Drainage, Pavements &amp; Site Prep</span>
+                <i data-lucide="pickaxe" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 order-2 lg:order-1 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80" alt="Project Management" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">End-to-End Timeline Oversight</span>
+                <i data-lucide="clipboard-check" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 06</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Project Management</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              Our project management team oversees every phase of construction, ensuring projects are completed efficiently, within budget, and according to schedule.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 7 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 07</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Quantity Surveying &amp; Cost Estimation</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We provide professional cost planning, budgeting, quantity take-offs, and financial management to help clients maximize value for their investments.
+            </p>
+          </div>
+          <div class="lg:col-span-6 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80" alt="Quantity Surveying" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Budget Planning &amp; Cost Control</span>
+                <i data-lucide="calculator" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 8 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 order-2 lg:order-1 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7" alt="Construction Consultancy" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Feasibility &amp; Procurement Advice</span>
+                <i data-lucide="briefcase" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 08</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Construction Consultancy</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We offer expert advice on construction planning, feasibility studies, procurement, quality assurance, contract administration, and project execution.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 9 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 09</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Site Supervision</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              Our experienced professionals provide continuous supervision and quality control to ensure all construction activities meet the required standards and specifications.
+            </p>
+          </div>
+          <div class="lg:col-span-6 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Site Supervision" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Continuous On-Site Quality Control</span>
+                <i data-lucide="eye" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 10 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center fade-in-on-scroll">
+          <div class="lg:col-span-6 order-2 lg:order-1 relative">
+            <div class="relative border border-app-border shadow-xl">
+              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1000&q=80" alt="Maintenance Services" class="w-full h-[300px] sm:h-[360px] object-cover" />
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-app-surface/95 border border-app-border flex items-center justify-between">
+                <span class="text-xs font-bold text-app-text uppercase tracking-wider">Long-Term Facility Preservation</span>
+                <i data-lucide="shield" class="w-5 h-5 text-primary-container"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-4">
+            <span class="font-mono text-xs font-bold text-primary-container bg-primary-container/10 px-3 py-1 uppercase tracking-widest border border-primary-container/20">Service 10</span>
+            <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-app-text uppercase">Maintenance Services</h3>
+            <p class="text-app-text-muted text-sm leading-relaxed">
+              We offer routine maintenance, repairs, and facility improvement services to preserve the quality, safety, and longevity of buildings after construction.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team" class="py-16 sm:py-24 px-6 sm:px-12 lg:px-margin-desktop bg-app-bg border-t border-app-border fade-in-on-scroll">
+      <div class="max-w-3xl mb-16">
+        <p class="text-primary-container uppercase tracking-[0.25em] text-xs font-bold mb-2">LEADERSHIP</p>
+        <h2 class="font-headline text-2xl sm:text-3xl lg:text-4xl font-extrabold text-app-text uppercase">OUR TEAM</h2>
+        <p class="mt-2 text-app-text-muted text-xs sm:text-sm">Meet the executive leadership driving Cladel Construction Limited forward.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-app-surface border border-app-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+          <!-- <div class="relative h-72 w-full bg-app-surface-dim">
+            <img 
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" 
+              alt="Hugh Yaw Debrah" 
+              class="w-full h-full object-cover object-top"
+            />
+          </div> -->
+          <div class="p-6">
+            <span class="text-[11px] font-bold text-primary-container tracking-widest uppercase mb-1 block">EXECUTIVE DIRECTOR</span>
+            <h3 class="font-headline text-lg font-extrabold text-app-text uppercase">Hugh Yaw Debrah</h3>
+          </div>
+        </div>
+
+        <div class="bg-app-surface border border-app-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+          <!-- <div class="relative h-72 w-full bg-app-surface-dim">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
+              alt="Dianah Asamoah" 
+              class="w-full h-full object-cover object-top"
+            />
+          </div> -->
+          <div class="p-6">
+            <span class="text-[11px] font-bold text-primary-container tracking-widest uppercase mb-1 block">DEPUTY EXECUTIVE DIRECTOR</span>
+            <h3 class="font-headline text-lg font-extrabold text-app-text uppercase">Dianah Amoah</h3>
+          </div>
+        </div>
+
+        <div class="bg-app-surface border border-app-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+          <!-- <div class="relative h-72 w-full bg-app-surface-dim">
+            <img 
+              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" 
+              alt="Reuben Osei-Asibey" 
+              class="w-full h-full object-cover object-top"
+            />
+          </div> -->
+          <div class="p-6">
+            <span class="text-[11px] font-bold text-primary-container tracking-widest uppercase mb-1 block">SECRETARY</span>
+            <h3 class="font-headline text-lg font-extrabold text-app-text uppercase">Reuben Osei-Asibey</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT US SECTION -->
+    <section class="py-20 sm:py-28 px-6 sm:px-12 lg:px-margin-desktop bg-app-surface-dim border-t border-app-border" id="contact">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        
+        <div class="space-y-8">
+          <div>
+            <p class="text-primary-container text-xs font-bold tracking-[0.25em] uppercase mb-2">REACH OUT</p>
+            <h2 class="font-headline text-2xl sm:text-3xl md:text-4xl font-extrabold text-app-text uppercase">CONTACT US</h2>
+            <p class="text-app-text-muted text-sm sm:text-base mt-2 leading-relaxed">
+              We are ready to assist you with your next construction, renovation, or engineering inquiry.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 bg-primary-container text-white flex items-center justify-center shrink-0 shadow-md">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase font-bold text-app-text-muted tracking-wider">Phone</p>
+                <p class="text-app-text font-bold text-sm sm:text-base">(+233) 208119211 / 558262264</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 bg-primary-container text-white flex items-center justify-center shrink-0 shadow-md">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase font-bold text-app-text-muted tracking-wider">Email</p>
+                <p class="text-app-text font-bold text-sm sm:text-base">info@cladelconstruction.com</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 bg-primary-container text-white flex items-center justify-center shrink-0 shadow-md">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase font-bold text-app-text-muted tracking-wider">Website</p>
+                <p class="text-app-text font-bold text-sm sm:text-base">www.cladelconstruction.com</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 bg-primary-container text-white flex items-center justify-center shrink-0 shadow-md">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase font-bold text-app-text-muted tracking-wider">Business Location</p>
+                <p class="text-app-text font-bold text-sm sm:text-base">Kwame Amoako II Street, Anwomaso, Kumasi Ghana</p>
+                <p class="text-xs text-app-text-muted font-mono mt-1">GPS Address: AK-846-2803</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 bg-primary-container text-white flex items-center justify-center shrink-0 shadow-md">
+                <i data-lucide="mailbox" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase font-bold text-app-text-muted tracking-wider">Postal Address</p>
+                <p class="text-app-text font-bold text-sm sm:text-base">P. O. Box 10101, Kumasi – Ashanti Region</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-app-surface p-8 sm:p-10 border border-app-border shadow-xl">
+          <form class="space-y-6" onsubmit="event.preventDefault();">
+            <div>
+              <label class="block text-xs uppercase font-bold text-app-text mb-2">Full Name</label>
+              <input class="w-full bg-app-bg border border-app-border focus:border-primary-container text-app-text px-4 py-3.5 text-sm outline-none" placeholder="Your Name" type="text"/>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-bold text-app-text mb-2">Email Address</label>
+              <input class="w-full bg-app-bg border border-app-border focus:border-primary-container text-app-text px-4 py-3.5 text-sm outline-none" placeholder="name@domain.com" type="email"/>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-bold text-app-text mb-2">Service Required</label>
+              <input class="w-full bg-app-bg border border-app-border focus:border-primary-container text-app-text px-4 py-3.5 text-sm outline-none" placeholder="e.g. Building Plans & Approvals" type="text"/>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-bold text-app-text mb-2">Message</label>
+              <textarea class="w-full bg-app-bg border border-app-border focus:border-primary-container text-app-text px-4 py-3.5 text-sm outline-none" placeholder="Write your inquiry..." rows="4"></textarea>
+            </div>
+            <button class="w-full bg-primary-container text-white py-4 font-bold uppercase text-xs tracking-widest hover:bg-black hover:text-white transition-all shadow-xl flex items-center justify-center gap-2" type="submit">
+              <span>Send Message</span>
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-app-bg text-app-text-muted font-mono text-xs flex flex-col md:flex-row justify-between items-center px-6 sm:px-12 lg:px-margin-desktop py-10 border-t border-app-border gap-4 text-center md:text-left">
+    <div>
+      <span class="font-headline font-black text-sm text-app-text uppercase">Cladel Construction Limited</span>
+      <p class="text-[10px] mt-1">Incorporated under the Companies Act, 2019 (Act 992). All Rights Reserved.</p>
+    </div>
+    <p class="text-[10px]">Kwame Amoako II Street, Anwomaso, Kumasi Ghana</p>
+  </footer>
+
+  <!-- External Script -->
+  <script src="src/script.js"></script>
+</body>
 </html>

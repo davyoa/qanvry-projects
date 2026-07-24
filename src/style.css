@@ -1,197 +1,76 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --bg-main: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-surface-dim: #f0f1f4;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: rgba(15, 23, 42, 0.12);
+  --brand-red: #d62828;
+  --brand-black: #080808;
 
-/* Apply Poppins globally */
+  --hero-overlay-gradient: linear-gradient(
+    to bottom, 
+    rgba(255, 255, 255, 0.25) 0%, 
+    rgba(255, 255, 255, 0.50) 50%, 
+    rgba(255, 255, 255, 0.90) 100%
+  );
+}
+
+.dark {
+  --bg-main: #050505;
+  --bg-surface: #111111;
+  --bg-surface-dim: #0a0a0a;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --brand-red: #d62828;
+  --brand-black: #080808;
+
+  --hero-overlay-gradient: linear-gradient(
+    to bottom, 
+    rgba(5, 5, 5, 0.70) 0%, 
+    rgba(5, 5, 5, 0.85) 60%, 
+    rgba(5, 5, 5, 0.98) 100%
+  );
+}
+
+/* Enforce 90-degree square, sharp edges globally */
 * {
-	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  border-radius: 0 !important;
 }
 
-/* Global styles from the original HTML */
 body {
-	background-color: #000000;
-	color: #E4E1E7;
-	margin: 0;
-	overflow-x: hidden;
-	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-html {
-	scroll-behavior: smooth;
+.hero-gradient-overlay {
+  background: var(--hero-overlay-gradient);
 }
 
-/* Animations */
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes slideInLeft {
-	from {
-		opacity: 0;
-		transform: translateX(-30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-
-@keyframes slideInRight {
-	from {
-		opacity: 0;
-		transform: translateX(30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-
-@keyframes scaleIn {
-	from {
-		opacity: 0;
-		transform: scale(0.95);
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-/* Utility animation classes */
-.animate-fade-in {
-	animation: fadeIn 0.6s ease-out;
-}
-
-.animate-fade-in-up {
-	animation: fadeInUp 0.6s ease-out;
-}
-
-.animate-slide-in-left {
-	animation: slideInLeft 0.6s ease-out;
-}
-
-.animate-slide-in-right {
-	animation: slideInRight 0.6s ease-out;
-}
-
-.animate-scale-in {
-	animation: scaleIn 0.6s ease-out;
-}
-
-/* Intersection observer animations (hidden by default, reveal when in-view) */
+/* Scroll Animations */
 .fade-in-on-scroll {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in-on-scroll.in-view {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* Simple slide utilities for side-entry */
-.slide-in-left {
-	opacity: 0;
-	transform: translateX(-30px);
-	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.slide-in-left.in-view {
-	opacity: 1;
-	transform: translateX(0);
-}
-
-.slide-in-right {
-	opacity: 0;
-	transform: translateX(30px);
-	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.slide-in-right.in-view {
-	opacity: 1;
-	transform: translateX(0);
-}
-
-.hero-scene {
-	transition: transform 0.25s ease-out;
-}
-
-.hero-mask {
-	transition: clip-path 0.18s ease-out;
-}
-
-.hero-reveal-line {
-	transition: left 0.12s ease-out;
-}
-
-.industrial-shadow {
-	box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nav-link {
-	font-size: 14px;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	transition: all 0.3s ease;
-	font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-	color: #d62828;
-}
-
-.blueprint-grid {
-	background-image: 
-		linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-	background-size: 60px 60px;
-}
-
-/* Button animations */
-button {
-	transition: all 0.3s ease;
-}
-
-button:hover {
-	transform: translateY(-2px);
-}
-
-/* Form input animations */
-input, textarea {
-	transition: all 0.3s ease;
-	font-family: 'Poppins', sans-serif;
-}
-
-input:focus, textarea:focus {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(214, 40, 40, 0.2);
-}
-
-/* Card hover effects */
-.group {
-	transition: all 0.3s ease;
-}
-
-article {
-	transition: all 0.3s ease;
-}
-
-article:hover {
-	transform: translateY(-4px);
+  color: var(--brand-red);
 }
