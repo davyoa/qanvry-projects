@@ -1,8 +1,10 @@
+import { createIcons, icons } from 'lucide';
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Lucide Icons
-  if (window.lucide) {
-    lucide.createIcons();
-  }
+  createIcons({ icons });
 
   // Theme Switcher
   const toggleBtn = document.getElementById('theme-toggle');
